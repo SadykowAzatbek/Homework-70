@@ -4,3 +4,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+.photo {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}

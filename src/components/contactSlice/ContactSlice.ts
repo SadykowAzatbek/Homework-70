@@ -5,6 +5,7 @@ export interface contactType {
   phone: string;
   email: string;
   photo: string;
+  hasPhoto: boolean;
 }
 
 const initialState: contactType = {
@@ -12,6 +13,7 @@ const initialState: contactType = {
   phone: '',
   email: '',
   photo: '',
+  hasPhoto: false,
 };
 
 export const contactSlice = createSlice({
@@ -23,6 +25,7 @@ export const contactSlice = createSlice({
       state.phone = payload.phone;
       state.email = payload.email;
       state.photo = payload.photo;
+      state.hasPhoto = state.photo.length > 1;
     },
     cleanValue: (state) => {
       state.name = '';

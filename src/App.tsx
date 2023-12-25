@@ -13,7 +13,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<div>home</div>} />
-          <Route path="/new" element={<ContactForm />} />
+          <Route path="/:new" element={<ContactForm />} />
         </Routes>
       </main>
     </>

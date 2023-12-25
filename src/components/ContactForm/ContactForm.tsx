@@ -29,7 +29,7 @@ const ContactForm = () => {
   return (
     <div>
       <h2>Add new contact</h2>
-      <form onSubmit={formSubmit}>
+      <form onSubmit={formSubmit} className="d-flex flex-column w-50 gap-2">
         <input id="name" name="name" type="text"
                required
                placeholder="name"
@@ -55,8 +55,18 @@ const ContactForm = () => {
                onChange={onChange}
         />
 
-        <button type="submit">Save</button>
-        <button type="button" onClick={() => navigate('/')}>Back to contacts</button>
+        {
+          !contactData.hasPhoto ? <div className="photo"></div> :
+          <div className="photo">
+            <img src={contactData.photo} alt="Photo" />
+          </div>
+        }
+
+        <button type="submit" className="btn btn-success">Save</button>
+        <button type="button"
+                onClick={() => navigate('/')}
+                className="btn btn-light"
+        >Back to contacts</button>
       </form>
     </div>
   );
