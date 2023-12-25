@@ -39,9 +39,19 @@ export const fetchGetOneContact = createAsyncThunk<void, string>(
     const response = await axiosApi.get<contactType>('contacts/' + id + '.json');
     const result = response.data;
 
-    console.log(response.data);
+    dispatch(valueData({...result, id}));
 
-    await dispatch(valueData({...result, id}));
+  },
+);
+
+export const fetchEditContact = createAsyncThunk<void, string>(
+  'put/contact',
+  async (id) => {
+
+    const response = await axiosApi.get<contactType>('contacts/' + id + '.json');
+    const result = response.data;
+
+    await axiosApi.put('contacts/' + id + '.json', result);
 
   },
 );

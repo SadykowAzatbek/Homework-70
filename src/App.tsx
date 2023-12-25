@@ -15,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new" element={<ContactForm />} />
-            <Route path="/edit/:id" element={<ContactForm />} />
+          <Route path="/edit/:id" element={<ContactForm />} />
+          <Route path="*" element={<h2>Not found!</h2>} />
         </Routes>
       </main>
     </>

@@ -4,6 +4,7 @@ import {fetchContactsGet, fetchGetOneContact} from '../contactSlice/ContactThunk
 import {useEffect} from 'react';
 import {cleanValue, toggleHiddenBlock} from '../contactSlice/ContactSlice';
 import {useNavigate} from 'react-router-dom';
+import Loader from '../Loader/Loader';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Home = () => {
   const contactsList = useSelector((state: RootState) => state.contactList);
   const contactHidden = useSelector((state: RootState) => state.contact.hiddenBlock);
   const oneContact = useSelector((state: RootState) => state.contact);
+  const isLoading = useSelector((state: RootState) => state.contact.isLoading);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -33,7 +35,7 @@ const Home = () => {
   return (
     <>
       <div>
-        {contactsList.contacts.map((item) => (
+        {isLoading ? <Loader /> : contactsList.contacts.map((item) => (
           <div className="border border-dark w-50 m-3 p-2 d-flex align-items-center rounded-1" onClick={() => contactData(item.id)} key={item.id}>
             <div className="block me-1">
               <img className="contact-image" src={item.photo} alt="photo" />
@@ -54,7 +56,7 @@ const Home = () => {
                 <div>Email: {oneContact.email !== '' ? oneContact.email : 'there is not email'}</div>
               </div>
               <div className="d-flex gap-5">
-                <button className="btn btn-warning" onClick={() => navigate('/edit/' + oneContact.id)}>edit</button>
+                <button className="btn btn-warning" onClick={() => navigate('/edit/' + oneContact.id)} disabled={false}>edit</button>
                 <button className="btn btn-danger">delete</button>
               </div>
             </div>
