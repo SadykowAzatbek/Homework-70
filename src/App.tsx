@@ -1,6 +1,7 @@
 import './App.css';
 import {Link, Route, Routes} from 'react-router-dom';
 import ContactForm from './components/ContactForm/ContactForm';
+import Home from './components/Home/Home';
 
 function App() {
 
@@ -12,8 +13,9 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<div>home</div>} />
-          <Route path="/:new" element={<ContactForm />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/new" element={<ContactForm />} />
+            <Route path="/edit/:id" element={<ContactForm />} />
         </Routes>
       </main>
     </>
